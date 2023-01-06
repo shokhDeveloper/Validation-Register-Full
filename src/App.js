@@ -1,25 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
+import { useContext, useEffect, useState } from "react";
+import { Context, ProviderContext } from "./Context/Context";
+import { Home } from "./Pages/Home";
+import { Home as Good } from "./Good";
+function App(){
+  const {token} = useContext(Context)
+  return(
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        {token !== null? <Good/>: <Home/>}
     </div>
-  );
+  )
 }
-
 export default App;
